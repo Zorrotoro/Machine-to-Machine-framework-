@@ -1,0 +1,37 @@
+#Function Source code for browsing device tags from server.
+
+#Function browse name (device tag and device tag name)
+def browse_name(node):
+    """ Internal function...
+        THis function extracts the list of node available in a server. 
+        By applying a proper if condition this can used to extract selective node type from server"""
+    global varName, varNode
+    for childId in node.get_children(): #iterates through every single node of parent class
+        ch = client.get_node(childId) #gets the child node ID
+        
+      
+        if str(ch.get_node_class()) == 'NodeClass.Object': #IF object node recursive as a parent node
+            browse_name(ch)
+        elif str(ch.get_node_class()) == 'NodeClass.Variable' and 'ns=' in str(ch): #Looks for variable node with namespace
+            try:
+                app=str(ch.get_browse_name()).replace("QualifiedName(","")
+               
+                
+            
+                papp=app.replace(')','')
+                
+
+                #print(ch.get_value(),"and",papp)
+
+                
+                
+                varName.append(papp) #stores node name in a list
+                varNode.append(ch) #stores node ID in a list
+                #print(varNode[0].get_value())
+              
+                
+                
+            except ua.uaerrors._auto.BadWaitingForInitialData:
+                pass
+    
+    return varName,varNode
