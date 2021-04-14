@@ -1,4 +1,9 @@
-# Machine-to-Machine-framework-
+# Adv. Machine-to-Machine-framework-
+
+Machine to Machine communication typical 2 devices talking to each other (server-client) or computer and a server machine.
+
+Adv. Machine-to-Machine communication implies 2 or more server machines talking to each other
+
 Machine to Machine communication framework using OPC UA (Python Server-Client)
 
 This code contains the desktop framework for estabishing Machine to Machine communication using python. 
